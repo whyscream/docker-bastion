@@ -11,7 +11,7 @@ ENV HOMEDIR=${HOMEDIR}
 ENV HOST_KEYS_PATH_PREFIX=/usr/local/
 ENV HOST_KEYS_PATH=${HOST_KEYS_PATH_PREFIX}etc/ssh
 
-RUN apk add openssh-server openssh-client
+RUN apk update && apk add --no-cache openssh-server openssh-client python3
 RUN install --directory --mode 700 /var/run/sshd \
     && install --directory --mode 700 ${HOST_KEYS_PATH}
 
