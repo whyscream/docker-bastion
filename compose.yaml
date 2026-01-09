@@ -8,6 +8,6 @@ services:
     ports:
       - "2222:22"
     volumes:
-      - ./ssh_keys:/home/bastion/.ssh:ro
+      - ./authorized_keys:/var/lib/bastion/.ssh/authorized_keys:ro
       # After initial setup, mount host SSH keys as read-only
       - ./host_keys:/usr/local/etc/ssh:rw

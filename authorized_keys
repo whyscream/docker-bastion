@@ -1,0 +1,2 @@
+# Placeholder for SSH keys management. Place all ssh public keys in this file
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJrA2lCyF19haKHw6PeL3IuWvISZztL/4HSZRe5QSpKG tom@N141ZU
