@@ -1,0 +1,15 @@
+Welcome to bastion!
+
+To use this bastion as a jump host, add the following lines to your
+SSH config (~/.ssh/config):
+
+Host bastion
+  Hostname bastion.example.com # Replace with your bastion's hostname or IP
+  User bastion
+  Port 2222 # Replace with your bastion's SSH port if different
+
+This simply connect to a server protected by bastion:
+
+ssh -J bastion username@server
+
+Happy hopping!

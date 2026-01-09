@@ -1,5 +1,6 @@
 services:
   bastion:
+    image: bastion
     build:
       context: .
       dockerfile: Dockerfile
@@ -11,3 +12,12 @@ services:
       - ./authorized_keys:/var/lib/bastion/.ssh/authorized_keys:ro
       # After initial setup, mount host SSH keys as read-only
       - ./host_keys:/usr/local/etc/ssh:rw
+      - ./motd:/etc/motd:ro
+    environment:
+      # These are the default values, modify as needed
+      - ALLOW_AGENT_FORWARDING=yes
+      - ALLOW_TCP_FORWARDING=yes
+      - ALLOW_X11_FORWARDING=no
+    extra_hosts:
+      # Add short names that you can use to connect to your internal hosts
+      - homelab:192.168.178.5
