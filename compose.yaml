@@ -1,0 +1,13 @@
+services:
+  bastion:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bastion
+    hostname: bastion
+    ports:
+      - "2222:22"
+    volumes:
+      - ./ssh_keys:/home/bastion/.ssh:ro
+      # After initial setup, mount host SSH keys as read-only
+      - ./host_keys:/usr/local/etc/ssh:rw
