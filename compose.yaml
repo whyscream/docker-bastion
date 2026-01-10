@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
     container_name: bastion
     hostname: bastion
+    restart: unless-stopped
     ports:
       - "2222:22"
     volumes:
