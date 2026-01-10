@@ -10,13 +10,14 @@ This Docker image provides a lightweight SSH bastion host based on Alpine Linux.
 
 ## Usage
 
-Add your public SSH keys to the `authorized_keys` file to allow access. You can mount this file into the container at runtime.
+1) Add your public SSH keys to the `authorized_keys` file to allow access. You can mount this file into the container at runtime. Note that SSH server will refuse to use this file with 'insecure' permissions, so ensure it is set to `600`.
 
-SSH host keys are generated automatically on the first run. You'll want to store these keys outside the container to ensure they persist across restarts. You can do this by mounting a volume to `/usr/local/etc/ssh`.
+2) SSH host keys are generated automatically on the first run. You'll want to store these keys outside the container to ensure they persist across restarts. You can do this by mounting a volume to `/usr/local/etc/ssh`.
 
 To start the SSH bastion container, use the following command:
 
 ```shell
+chmod 600 ./authorized_keys
 docker build -t bastion .
 docker run -d \
   -p 2222:22 \
@@ -25,6 +26,8 @@ docker run -d \
   -v ./motd:/etc/motd:ro \
   --name bastion bastion
 ```
+
+Or use the `compose.yaml` in this repo as a starting point.
 
 To log in to the bastion host, use:
 
