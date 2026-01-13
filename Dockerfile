@@ -14,9 +14,9 @@ ENV HOST_KEYS_PATH=${HOST_KEYS_PATH_PREFIX}etc/ssh
 RUN apk update && apk add --no-cache \
     openssh=10.2_p1-r0 \
     python3=3.12.12-r0
-RUN install --directory --mode 700 /var/run/sshd \
-    && install --directory --mode 700 ${HOST_KEYS_PATH}
+RUN install --directory --mode 700 ${HOST_KEYS_PATH}
 
+# Add user with a readonly home directory
 RUN addgroup -g ${USER_GID} ${USERNAME} \
     && adduser -D -u ${USER_UID} -G ${USERNAME} -h ${HOMEDIR} -s /bin/sh ${USERNAME} \
     && chmod 500 ${HOMEDIR}
