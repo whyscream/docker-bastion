@@ -1,0 +1,12 @@
+[tasks.build]
+description = "Build the container image"
+run = '''
+BUILD_DATE=$(date --utc +'%Y-%m-%dT%H:%M:%SZ')
+BUILD_VERSION=$(git rev-parse --short HEAD)
+docker compose build --pull --build-arg BUILD_DATE=${BUILD_DATE} --build-arg BUILD_VERSION=${BUILD_VERSION}
+'''
+
+[tasks.up]
+description = "Run the container"
+depends = ["build"]
+run = "docker compose up"

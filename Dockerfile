@@ -1,5 +1,15 @@
 FROM alpine:3.23.2
-LABEL maintainer="Tom Hendrikx"
+
+ARG BUILD_DATE
+ARG BUILD_VERSION
+LABEL \
+    org.opencontainers.image.source="https://github.com/whyscream/docker-bastion/" \
+    org.opencontainers.image.description="A minimal SSH bastion host based on Alpine Linux." \
+    org.opencontainers.image.licenses="BSD-3-Clause" \
+    org.opencontainers.image.url="https://whyscream.github.io/docker-bastion/" \
+    org.opencontainers.image.vendor="Tom Hendrikx <tom@whyscream.net>" \
+    org.opencontainers.image.build-date="$BUILD_DATE" \
+    org.opencontainers.image.version="$BUILD_VERSION"
 
 ARG USERNAME=bastion
 ARG HOMEDIR=/var/lib/${USERNAME}
