@@ -1,4 +1,4 @@
-FROM alpine:3.23.2
+FROM alpine:3.24
 
 ARG BUILD_DATE
 ARG BUILD_VERSION
@@ -22,8 +22,8 @@ ENV HOST_KEYS_PATH_PREFIX=/usr/local/
 ENV HOST_KEYS_PATH=${HOST_KEYS_PATH_PREFIX}etc/ssh
 
 RUN apk update && apk add --no-cache \
-    openssh=10.2_p1-r0 \
-    python3=3.12.12-r0
+    openssh=10.3_p1-r1 \
+    python3=3.14.10-r1
 RUN install --directory --mode 700 ${HOST_KEYS_PATH}
 
 # Add user with a readonly home directory
